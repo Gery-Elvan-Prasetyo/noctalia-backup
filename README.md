@@ -2,4 +2,5 @@
 
 
 kalo mau pake silahkan mas
-git 
+
+Bayar pakai SayBread aja
