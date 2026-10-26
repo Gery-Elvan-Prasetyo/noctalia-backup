@@ -17,14 +17,14 @@ end
 
 hl.config({
     general = {
-        gaps_in = 3,
-        gaps_out = 8,
-        border_size = 2,
+        gaps_in = 1,
+        gaps_out = 6,
+        border_size = 2, -- 1. this shit
         extend_border_grab_area = 10,
         resize_on_border = true,
         col = {
-            active_border = noctalia.active_border,
-            inactive_border = noctalia.inactive_border,
+            active_border = noctalia.active_border, -- 2. biarkan aktif
+            inactive_border = "rgba(00000000)",
         },
     },
     group = {
@@ -49,6 +49,9 @@ hl.config({
         active_opacity = 0.95,
         inactive_opacity = 0.90,
         fullscreen_opacity = 1,
+        shadow = {
+            enabled = false,
+        },
         blur = {
             size = 5,
             passes = 2,

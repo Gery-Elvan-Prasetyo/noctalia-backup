@@ -1,36 +1,120 @@
+
 {
   "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/master/doc/json_schema.json",
-   "logo": {
+
+  "logo": {
     "type": "kitty",
     "source": "/home/arianeve/Pictures/pffp/flame3.jpg",
-    "height": 18,
+    "height": 14,
     "padding": {
-      "top": 1
+      "top": 2,
+      "left": 6,
+      "right": 2
     }
   },
+
+  "display": {
+    "separator": "  ",
+    "color": {
+      "keys": "#B8CBE3",
+      "output": "#FFFFFF",
+      "separator": "#E8D8C3",
+      "title": "#E5B96F"
+    },
+    "key": {
+      "width": 22
+    }
+  },
+
   "modules": [
-    "title",
-    "separator",
-    "os",
-    "host",
-    "kernel",
-    "separator",
-    "shell",
-    "display",
-    "de",
-    "wm",
-    "separator",
-    "wmtheme",
-    "icons",
-    "terminal",
-    "terminalfont",
-    "cpu",
-    "gpu",
-    "memory",
-    "swap",
-    "poweradapter",
-    "localip",
-    "locale",
+    {
+      "type": "title",
+      "format": "{##E5B96F}{user-name}{#}@{##E8D8C3}{host-name}{#}"
+    },
+
+    "break",
+
+    {
+      "type": "custom",
+      "key": " ",
+      "format": "{##E5B96F}󰍹  SYSTEM{#}"
+    },
+    {
+      "type": "os",
+      "key": "┃ ├─ OS",
+      "keyColor": "#B8CBE3"
+    },
+    {
+      "type": "kernel",
+      "key": "┃ ├─ Kernel",
+      "keyColor": "#B8CBE3"
+    },
+    {
+      "type": "uptime",
+      "key": "┃ ├─ Uptime",
+      "keyColor": "#B8CBE3"
+    },
+    {
+      "type": "packages",
+      "key": "┃ └─ Packages",
+      "keyColor": "#B8CBE3",
+      "format": "{all} total"
+    },
+
+    "break",
+
+    {
+      "type": "custom",
+      "key": " ",
+      "format": "{##E5B96F}󰓅  HARDWARE{#}"
+    },
+    {
+      "type": "cpu",
+      "key": "┃ ├─ CPU",
+      "keyColor": "#B8CBE3",
+      "format": "{name}"
+    },
+    {
+      "type": "gpu",
+      "key": "┃ ├─ GPU",
+      "keyColor": "#B8CBE3",
+      "format": "{name}"
+    },
+    {
+      "type": "memory",
+      "key": "┃ ├─ Memory",
+      "keyColor": "#B8CBE3"
+    },
+    {
+      "type": "disk",
+      "key": "┃ └─ Disk (/)",
+      "keyColor": "#B8CBE3",
+      "folders": ["/"]
+    },
+
+    "break",
+
+    {
+      "type": "custom",
+      "key": " ",
+      "format": "{##E5B96F}󰇄  DESKTOP{#}"
+    },
+    {
+      "type": "shell",
+      "key": "┃ ├─ Shell",
+      "keyColor": "#B8CBE3"
+    },
+    {
+      "type": "wm",
+      "key": "┃ ├─ WM",
+      "keyColor": "#B8CBE3"
+    },
+    {
+      "type": "terminal",
+      "key": "┃ └─ Terminal",
+      "keyColor": "#B8CBE3"
+    },
+
     "break"
   ]
 }

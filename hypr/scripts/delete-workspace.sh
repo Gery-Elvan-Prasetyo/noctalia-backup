@@ -16,8 +16,13 @@ set -euo pipefail
 
 notify() { notify-send -a Hyprland -u normal -t 3000 "Workspace" "$1" 2>/dev/null || true; }
 
-active_id=$(hyprctl -j activeworkspace | jq -r '.id')
-active_name=$(hyprctl -j activeworkspace | jq -r '.name')
+command -v hyprctl >/dev/null 2>&1 || exit 0
+command -v jq >/dev/null 2>&1 || exit 0
+
+active_json=$(hyprctl -j activeworkspace 2>/dev/null) || exit 0
+active_id=$(jq -r '.id // empty' <<<"$active_json" 2>/dev/null) || exit 0
+active_name=$(jq -r '.name // empty' <<<"$active_json" 2>/dev/null) || exit 0
+[ -n "$active_id" ] || exit 0
 
 # Hanya workspace numerik biasa yang didukung (bukan special / named)
 if ! [[ "$active_id" =~ ^[0-9]+$ ]] || [ "$active_id" -le 0 ]; then
@@ -25,8 +30,7 @@ if ! [[ "$active_id" =~ ^[0-9]+$ ]] || [ "$active_id" -le 0 ]; then
     exit 0
 fi
 
-mapfile -t ids < <(hyprctl -j workspaces | jq -r '.[].id' | sort -n)
-
+mapfile -t ids < <(hyprctl -j workspaces 2>/dev/null | jq -r '.[].id' 2>/dev/null | sort -n)
 if [ "${#ids[@]}" -le 1 ]; then
     notify "Tidak bisa menghapus workspace terakhir"
     exit 0
@@ -57,15 +61,22 @@ fi
 while read -r addr; do
     [ -n "$addr" ] || continue
     hyprctl dispatch "hl.dsp.window.move({ workspace = $target, window = \"address:$addr\" })" >/dev/null 2>&1 || true
-done < <(hyprctl -j clients | jq -r --argjson ws "$active_id" '.[] | select(.workspace.id == $ws) | .address')
+done < <(hyprctl -j clients 2>/dev/null | jq -r --argjson ws "$active_id" '.[] | select(.workspace.id == $ws) | .address' 2>/dev/null)
 
 # Lepas persistence (bila ada) agar workspace kosong ikut terhapus
-persistent=$(hyprctl -j workspaces | jq -r --argjson ws "$active_id" '.[] | select(.id == $ws) | .ispersistent')
+persistent=$(hyprctl -j workspaces 2>/dev/null | jq -r --argjson ws "$active_id" '.[] | select(.id == $ws) | .ispersistent' 2>/dev/null || true)
 if [ "$persistent" = "true" ]; then
     hyprctl eval "hl.workspace_rule({ workspace = \"$active_name\", persistent = false })" >/dev/null 2>&1 || true
 fi
 
 # Pindah fokus ke target → workspace lama (kosong) dihancurkan
 hyprctl dispatch "hl.dsp.focus({ workspace = $target })" >/dev/null 2>&1 || true
+
+# Verifikasi hasil
+remaining=$(hyprctl -j workspaces 2>/dev/null | jq -r --argjson ws "$active_id" '[.[] | select(.id == $ws)] | length' 2>/dev/null || echo 1)
+if [ "${remaining:-1}" -ge 1 ]; then
+    notify "Gagal menghapus workspace $active_name (masih ada)"
+    exit 0
+fi
 
 notify "Workspace $active_name dihapus, jendela dipindah ke workspace $target"

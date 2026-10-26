@@ -28,9 +28,10 @@ hl.bind(mainMod .. " + SHIFT + Up",                   hl.dsp.window.move({ direc
 hl.bind(mainMod .. " + SHIFT + Right",                hl.dsp.window.move({ direction = "r" }))
 hl.bind(mainMod .. " + SHIFT + Left",                 hl.dsp.window.move({ direction = "l" }))
 hl.bind(mainMod .. " + SHIFT + Down",                 hl.dsp.window.move({ direction = "d" }))
-hl.bind(mainMod .. " + SHIFT + 1",                    hl.dsp.window.move({ monitor = MONITOR1 }))
-hl.bind(mainMod .. " + SHIFT + 2",                    hl.dsp.window.move({ monitor = MONITOR2 }))
-hl.bind(mainMod .. " + SHIFT + 3",                    hl.dsp.window.move({ monitor = MONITOR3 }))
+-- NOTE: SUPER+SHIFT+1/2/3 used to "move window to monitor N", but those binds
+-- were silently overridden further down (the workspace-move binds take the same
+-- keys, and MONITOR1/2/3 are empty). Monitor moves are handled by the scroll
+-- binds below (monitor = "+1" / "-1"). Removed to avoid dead/duplicate binds.
 hl.bind(mainMod .. " + SHIFT + mouse_up",             hl.dsp.window.move({ monitor   = "+1" }))
 hl.bind(mainMod .. " + SHIFT + mouse_down",           hl.dsp.window.move({ monitor   = "-1" }))
 hl.bind(mainMod .. " + CONTROL + SHIFT + Right",      hl.dsp.window.move({ workspace = "r+1" }))
@@ -51,8 +52,11 @@ hl.bind(mainMod .. " + mouse:273", hl.dsp.window.resize())
 ------------------
 
 hl.bind(mainMod .. " + Return",     hl.dsp.exec_cmd(launchPrefix .. TERMINAL))
+hl.bind(mainMod .. " + T",          hl.dsp.exec_cmd(launchPrefix .. TERMINAL))  -- dulu dari HyDE, dipertahankan
 hl.bind(mainMod .. " + E",          hl.dsp.exec_cmd(launchPrefix .. FILE_MANAGER))
 hl.bind(mainMod .. " + W",          hl.dsp.exec_cmd(launchPrefix .. BROWSER))
+hl.bind(mainMod .. " + B",          hl.dsp.exec_cmd(launchPrefix .. ZAPFAST))  -- dulu dari HyDE, dipertahankan
+hl.bind(mainMod .. " + R",          hl.dsp.exec_cmd(noctCall .. "plugin noctalia/screen_recorder:service all toggle"))
 hl.bind("CONTROL + SHIFT + Escape", hl.dsp.exec_cmd(launchPrefix .. TERMINAL .. " -e btop"))
 hl.bind(mainMod .. " + C",          hl.dsp.exec_cmd(launchPrefix .. CALC))
 hl.bind(mainMod .. " + Z",          hl.dsp.exec_cmd(noctCall .. "settings-toggle"))
@@ -60,6 +64,7 @@ hl.bind(mainMod .. " + X",          hl.dsp.exec_cmd(noctCall .. "panel-toggle co
 hl.bind(mainMod .. " + Space",      hl.dsp.exec_cmd(noctCall .. "panel-toggle launcher"))
 hl.bind(mainMod .. " + period",     hl.dsp.exec_cmd(noctCall .. "panel-toggle launcher /emo"))
 hl.bind(mainMod .. " + L",          hl.dsp.exec_cmd(noctCall .. "session lock"))
+hl.bind(mainMod .. " + Delete",     hl.dsp.exec_cmd(noctCall .. "session logout"))
 hl.bind(mainMod .. " + ALT + C",    hl.dsp.exec_cmd(noctCall .. "panel-toggle session"))
 
 ---------------------------
@@ -104,17 +109,15 @@ hl.bind(mainMod .. " + V", hl.dsp.exec_cmd(noctCall .. "panel-toggle clipboard")
 -- Notifications
 hl.bind(mainMod .. " + A", hl.dsp.exec_cmd(noctCall .. "panel-toggle control-center notifications"))
 
--- Recording
-hl.bind(mainMod .. " + R", hl.dsp.exec_cmd("noctalia msg plugin noctalia/screen_recorder:service all toggle"))
+-- Recording dipindahkan ke SUPER+R (lihat bagian LAUNCHER)
 
 -------------------------------
 ---- WORKSPACES & MONITORS ----
 -------------------------------
 
--- Focus on monitors
-hl.bind(mainMod .. " + 1", hl.dsp.focus({ monitor = MONITOR1 }))
-hl.bind(mainMod .. " + 2", hl.dsp.focus({ monitor = MONITOR2 }))
-hl.bind(mainMod .. " + 3", hl.dsp.focus({ monitor = MONITOR3 }))
+-- NOTE: "Focus on monitor N" binds (SUPER+1/2/3 -> focus monitor MONITORn) were
+-- removed: they were overridden by the workspace-focus binds below (same keys)
+-- and MONITOR1/2/3 are empty. Cycle monitors with SUPER+CTRL+SHIFT+mouse_up/down.
 
 -- Focus on workspace number
 -- Absolute
@@ -132,6 +135,12 @@ end
 hl.bind(mainMod .. " + CONTROL + Right",       hl.dsp.focus({ workspace = "m+1" }))
 hl.bind(mainMod .. " + CONTROL + Left",        hl.dsp.focus({ workspace = "m-1" }))
 hl.bind(mainMod .. " + CONTROL + Down",        hl.dsp.focus({ workspace = "emptym" }))
+
+-- Hapus workspace yang sedang aktif (jendelanya dipindah ke workspace terdekat dulu)
+-- Dinonaktifkan sementara: tombol SUPER+Delete sekarang dipakai untuk logout.
+-- Aktifkan lagi dengan memindahkannya ke shortcut yang belum terpakai, contoh:
+-- hl.bind(mainMod .. " + SHIFT + Delete", hl.dsp.exec_cmd("$HOME/.config/hypr/scripts/delete-workspace.sh"))
+-- hl.bind(mainMod .. " + Delete", hl.dsp.exec_cmd("$HOME/.config/hypr/scripts/delete-workspace.sh"))
 
 -- Scroll through existing workspaces & monitors
 hl.bind(mainMod .. " + mouse_down",           hl.dsp.focus({ workspace = "m+1" }))

@@ -2,6 +2,11 @@ hl.config({
     dwindle = {
         preserve_split = true,
     },
+    general = {
+        -- Biarkan aplikasi fullscreen (game) request tearing -> frame rate & latency lebih bagus.
+        -- Tidak mengubah animasi/efek apa pun; hanya aktif kalau aplikasi memang memintanya.
+        allow_tearing = true,
+    },
     misc = {
         col = {
             splash = CACHYLGREEN,

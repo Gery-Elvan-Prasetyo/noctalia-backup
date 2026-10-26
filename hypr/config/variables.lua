@@ -3,7 +3,8 @@
 TERMINAL     = "kitty"
 FILE_MANAGER = "dolphin"
 BROWSER      = "brave-origin"
-CALC = "gnome-calculator"
+CALC         = "gnome-calculator"
+ZAPFAST      = "zapfast"
 
 -- Monitors
 MONITOR1 = ""
