@@ -1,0 +1,192 @@
+
+"$schema" = "https://starship.rs/config-schema.json"
+
+# ==========================================
+# SKY GRADIENT
+# Light Sky -> Pastel Blue -> Ocean Blue
+# ==========================================
+
+format = """
+[░▒▓](fg:#B9DDF0)\
+$username\
+$os\
+[](fg:#B9DDF0 bg:#A5CFE8)\
+$directory\
+[](fg:#A5CFE8 bg:#8DBBD9)\
+$git_branch\
+$git_status\
+[](fg:#8DBBD9 bg:#709FC4)\
+$nodejs\
+$bun\
+$rust\
+$golang\
+$php\
+[](fg:#709FC4 bg:#527FA7)\
+$time\
+[](fg:#527FA7)\
+[ ](fg:#527FA7)\
+"""
+
+# ==========================================
+# USERNAME
+# ==========================================
+
+[username]
+show_always = true
+style_user = "bold fg:#24465C bg:#B9DDF0"
+style_root = "bold fg:#9B414A bg:#B9DDF0"
+format = "[ $user ]($style)"
+disabled = false
+
+# ==========================================
+# HOSTNAME DISABLED
+# ==========================================
+
+# [hostname]
+# ssh_only = false
+# style = "bold #81A1C1"
+# format = "[@$hostname ](fg:#81A1C1)"
+# disabled = true
+
+# ==========================================
+# OPERATING SYSTEM
+# ==========================================
+
+[os]
+style = "fg:#24465C bg:#B9E1F7"
+format = "[ $symbol ]($style)"
+disabled = false
+
+[os.symbols]
+Windows = "󰍲"
+Ubuntu = "󰕈"
+SUSE = ""
+Raspbian = "󰐿"
+Mint = "󰣭"
+Macos = "󰀵"
+Manjaro = ""
+Linux = "󰌽"
+Gentoo = "󰣨"
+Fedora = "󰣛"
+Alpine = ""
+Amazon = ""
+Android = ""
+AOSC = ""
+Arch = "󰣇"
+Artix = "󰣇"
+EndeavourOS = ""
+CentOS = ""
+Debian = "󰣚"
+Redhat = "󱄛"
+RedHatEnterprise = "󱄛"
+Pop = ""
+CachyOS = "󰣇"
+
+# ==========================================
+# DIRECTORY
+# ==========================================
+
+[directory]
+style = "fg:#24465C bg:#A5CFE8"
+format = "[ $path ]($style)"
+truncation_length = 3
+truncation_symbol = "…/"
+
+[directory.substitutions]
+"Documents" = "󰈙 "
+"Downloads" = " "
+"Music" = " "
+"Pictures" = " "
+
+# ==========================================
+# GIT
+# ==========================================
+
+[git_branch]
+symbol = ""
+style = "fg:#24465C bg:#8DBBD9"
+format = "[ $symbol $branch ]($style)"
+
+[git_status]
+style = "fg:#24465C bg:#8DBBD9"
+format = "[$all_status$ahead_behind ]($style)"
+
+# ==========================================
+# JUJUTSU
+# ==========================================
+
+[jj_bookmark]
+symbol = ""
+style = "fg:#24465C bg:#8DBBD9"
+format = "[ $symbol $bookmark ]($style)"
+
+[jj_status]
+style = "fg:#24465C bg:#8DBBD9"
+format = "[($all )]($style)"
+
+# ==========================================
+# NODE.JS
+# ==========================================
+
+[nodejs]
+symbol = ""
+style = "fg:#24465C bg:#709FC4"
+format = "[ $symbol ($version) ]($style)"
+
+# ==========================================
+# BUN
+# ==========================================
+
+[bun]
+symbol = ""
+style = "fg:#24465C bg:#709FC4"
+format = "[ $symbol ($version) ]($style)"
+
+# ==========================================
+# RUST
+# ==========================================
+
+[rust]
+symbol = ""
+style = "fg:#24465C bg:#709FC4"
+format = "[ $symbol ($version) ]($style)"
+
+# ==========================================
+# GOLANG
+# ==========================================
+
+[golang]
+symbol = ""
+style = "fg:#24465C bg:#709FC4"
+format = "[ $symbol ($version) ]($style)"
+
+# ==========================================
+# PHP
+# ==========================================
+
+[php]
+symbol = ""
+style = "fg:#24465C bg:#709FC4"
+format = "[ $symbol ($version) ]($style)"
+
+# ==========================================
+# TIME
+# ==========================================
+
+[time]
+disabled = false
+time_format = "%R"
+style = "fg:#EAF6FC bg:#527FA7"
+format = "[  $time ]($style)"
+
+# ==========================================
+# PROMPT BEHAVIOR
+# ==========================================
+
+[line_break]
+disabled = true
+
+[character]
+success_symbol = ""
+error_symbol = ""
+vimcmd_symbol = ""
