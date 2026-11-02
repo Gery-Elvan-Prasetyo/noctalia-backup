@@ -4,8 +4,9 @@
 
   "logo": {
     "type": "kitty",
-    "source": "/home/arianeve/Pictures/pffp/flame3.jpg",
+    "source": "/run/media/arianeve/6ea47c08-bb80-4911-bdc2-b1d0802de51e/ppfp/Cropped/flame3.jpg",
     "height": 14,
+    "width": 28,
     "padding": {
       "top": 2,
       "left": 6,
@@ -16,10 +17,10 @@
   "display": {
     "separator": "  ",
     "color": {
-      "keys": "#B8CBE3",
+      "keys": "#A7C4DD",
       "output": "#FFFFFF",
-      "separator": "#E8D8C3",
-      "title": "#E5B96F"
+      "separator": "#F3EBDD",
+      "title": "#F0D7A4"
     },
     "key": {
       "width": 22
@@ -29,7 +30,7 @@
   "modules": [
     {
       "type": "title",
-      "format": "{##E5B96F}{user-name}{#}@{##E8D8C3}{host-name}{#}"
+      "format": "{##A77E62}{user-name}{#}@{##F3EBDD}{host-name}{#}"
     },
 
     "break",
@@ -37,27 +38,27 @@
     {
       "type": "custom",
       "key": " ",
-      "format": "{##E5B96F}󰍹  SYSTEM{#}"
+      "format": "{##F0D7A4}󰍹  SYSTEM{#}"
     },
     {
       "type": "os",
       "key": "┃ ├─ OS",
-      "keyColor": "#B8CBE3"
+      "keyColor": "#A7C4DD"
     },
     {
       "type": "kernel",
       "key": "┃ ├─ Kernel",
-      "keyColor": "#B8CBE3"
+      "keyColor": "#A7C4DD"
     },
     {
       "type": "uptime",
       "key": "┃ ├─ Uptime",
-      "keyColor": "#B8CBE3"
+      "keyColor": "#A7C4DD"
     },
     {
       "type": "packages",
       "key": "┃ └─ Packages",
-      "keyColor": "#B8CBE3",
+      "keyColor": "#A7C4DD",
       "format": "{all} total"
     },
 
@@ -66,29 +67,29 @@
     {
       "type": "custom",
       "key": " ",
-      "format": "{##E5B96F}󰓅  HARDWARE{#}"
+      "format": "{##F0D7A4}󰓅  HARDWARE{#}"
     },
     {
       "type": "cpu",
       "key": "┃ ├─ CPU",
-      "keyColor": "#B8CBE3",
+      "keyColor": "#A7C4DD",
       "format": "{name}"
     },
     {
       "type": "gpu",
       "key": "┃ ├─ GPU",
-      "keyColor": "#B8CBE3",
+      "keyColor": "#A7C4DD",
       "format": "{name}"
     },
     {
       "type": "memory",
       "key": "┃ ├─ Memory",
-      "keyColor": "#B8CBE3"
+      "keyColor": "#A7C4DD"
     },
     {
       "type": "disk",
       "key": "┃ └─ Disk (/)",
-      "keyColor": "#B8CBE3",
+      "keyColor": "#A7C4DD",
       "folders": ["/"]
     },
 
@@ -97,22 +98,22 @@
     {
       "type": "custom",
       "key": " ",
-      "format": "{##E5B96F}󰇄  DESKTOP{#}"
+      "format": "{##F0D7A4}󰇄  DESKTOP{#}"
     },
     {
       "type": "shell",
       "key": "┃ ├─ Shell",
-      "keyColor": "#B8CBE3"
+      "keyColor": "#A7C4DD"
     },
     {
       "type": "wm",
       "key": "┃ ├─ WM",
-      "keyColor": "#B8CBE3"
+      "keyColor": "#A7C4DD"
     },
     {
       "type": "terminal",
       "key": "┃ └─ Terminal",
-      "keyColor": "#B8CBE3"
+      "keyColor": "#A7C4DD"
     },
 
     "break"
