@@ -5,6 +5,7 @@ FILE_MANAGER = "dolphin"
 BROWSER      = "brave-origin"
 CALC         = "gnome-calculator"
 ZAPFAST      = "zapfast"
+VLC          = "vlc"
 
 -- Monitors
 MONITOR1 = ""

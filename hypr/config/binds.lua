@@ -31,6 +31,7 @@ hl.bind(mainMod .. " + SHIFT + Down",                 hl.dsp.window.move({ direc
 -- NOTE: SUPER+SHIFT+1/2/3 used to "move window to monitor N", but those binds
 -- were silently overridden further down (the workspace-move binds take the same
 -- keys, and MONITOR1/2/3 are empty). Monitor moves are handled by the scroll
+-- binds below (monitor = "+1" / "-1
 -- binds below (monitor = "+1" / "-1"). Removed to avoid dead/duplicate binds.
 hl.bind(mainMod .. " + SHIFT + mouse_up",             hl.dsp.window.move({ monitor   = "+1" }))
 hl.bind(mainMod .. " + SHIFT + mouse_down",           hl.dsp.window.move({ monitor   = "-1" }))
