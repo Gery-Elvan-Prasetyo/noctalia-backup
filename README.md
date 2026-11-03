@@ -8,6 +8,11 @@ Bayar pakai SayBread aja
 Anyway jangan lupa copy atau rename jadi config.jsonc
 -- jaga jaga aja sih heheh
 
+# FOR BINDS
+BINDS.md
+
+# FOR ADD BINDS 
+ADD_BINDS.MD
 
 # ADDING WORKSPACES
 -- go to config/variables.lua >> search WPM_NUM, >> customize amount of WPM_NUM (MAX 10)
