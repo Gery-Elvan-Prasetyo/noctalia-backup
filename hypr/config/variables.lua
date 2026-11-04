@@ -6,6 +6,8 @@ BROWSER      = "brave-origin"
 CALC         = "gnome-calculator"
 ZAPFAST      = "zapfast"
 VLC          = "vlc"
+ARTCRAFT     = "/home/arianeve/.local/share/applications/ai.storyteller.artcraft-launcher.desktop"
+LINER        = "/home/arianeve/LinerApp/Liner-0.2.10.AppImage"
 
 -- Monitors
 MONITOR1 = ""

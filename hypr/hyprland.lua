@@ -15,6 +15,6 @@ require("config.workspaces")
 
 
 -- For Noctalia Color templates
-require("noctalia").apply_theme()
+-- require("noctalia").apply_theme()
 -- Keep the local window border settings as the final override of theme colors.
 require("config.decorations")
